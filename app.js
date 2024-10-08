@@ -12,6 +12,7 @@ const Tought = require("./models/Tought"); // Importa o modelo Tought
 const User = require("./models/User"); // Importa o modelo User
 
 const toughtsRoutes = require("./routes/toughtsRoutes"); // Importa as rotas de Toughts
+const authRoutes = require("./routes/authRoutes");
 const ToughtController = require("./controllers/ToughtController"); // Importa o controlador de Toughts
 
 // Configura o template engine Handlebars
@@ -58,6 +59,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/toughts", toughtsRoutes); // Define as rotas para "/toughts"
+app.use("/", authRoutes);
 
 app.get("/", ToughtController.showToughts); // Define a rota para a página inicial
 
