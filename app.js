@@ -8,6 +8,9 @@ const app = express(); // Cria uma aplicação Express
 
 const conn = require("./db/conn"); // Importa a conexão com o banco de dados
 
+const Tought = require("./models/Tought");
+const User = require("./models/User");
+
 // Configura o template engine Handlebars
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
