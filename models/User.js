@@ -12,7 +12,7 @@ const User = db.define("users", {
     type: DataTypes.STRING, // O campo email é do tipo STRING
     require: true, // Este campo é obrigatório
   },
-  senha: {
+  password: {
     type: DataTypes.STRING, // O campo senha é do tipo STRING
     require: true, // Este campo é obrigatório
   },

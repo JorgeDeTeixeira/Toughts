@@ -65,6 +65,7 @@ app.get("/", ToughtController.showToughts); // Define a rota para a página inic
 
 // Sincroniza a conexão com o banco de dados e inicia o servidor
 conn
+  //.sync({ force: true })
   .sync()
   .then(() => {
     app.listen(3000, () => {
