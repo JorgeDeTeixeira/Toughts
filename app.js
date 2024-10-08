@@ -8,19 +8,22 @@ const app = express(); // Cria uma aplicação Express
 
 const conn = require("./db/conn"); // Importa a conexão com o banco de dados
 
-const Tought = require("./models/Tought");
-const User = require("./models/User");
+const Tought = require("./models/Tought"); // Importa o modelo Tought
+const User = require("./models/User"); // Importa o modelo User
+
+const toughtsRoutes = require("./routes/toughtsRoutes"); // Importa as rotas de Toughts
+const ToughtController = require("./controllers/ToughtController"); // Importa o controlador de Toughts
 
 // Configura o template engine Handlebars
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
 // Middleware para interpretar dados de formulários e JSON
-app.use(express.urlencoded({ extend: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extend: true })); // Interpreta dados de formulários
+app.use(express.json()); // Interpreta dados JSON
 
 // Middleware para servir arquivos estáticos
-app.use(express.static("public"));
+app.use(express.static("public")); // Define a pasta "public" para arquivos estáticos
 
 // Configuração da sessão
 app.use(
@@ -43,23 +46,27 @@ app.use(
 );
 
 // Middleware para mensagens flash
-app.use(flash());
+app.use(flash()); // Configura o middleware para mensagens flash
 
 // Middleware para adicionar a sessão às variáveis locais da resposta
 app.use((req, res, next) => {
   if (req.session.userid) {
-    res.locals.session = req.session;
+    res.locals.session = req.session; // Adiciona a sessão às variáveis locais se o usuário estiver logado
   }
 
-  next();
+  next(); // Passa para o próximo middleware
 });
+
+app.use("/toughts", toughtsRoutes); // Define as rotas para "/toughts"
+
+app.get("/", ToughtController.showToughts); // Define a rota para a página inicial
 
 // Sincroniza a conexão com o banco de dados e inicia o servidor
 conn
   .sync()
   .then(() => {
     app.listen(3000, () => {
-      console.log(`Aplicação iniciada com sucesso!`);
+      console.log(`Aplicação iniciada com sucesso!`); // Inicia o servidor na porta 3000
     });
   })
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(err)); // Loga erros de conexão
