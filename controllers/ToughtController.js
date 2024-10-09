@@ -20,7 +20,7 @@ module.exports = class ToughtController {
     }
 
     const toughts = JSON.parse(JSON.stringify(user.toughts));
-    
+
     res.render("toughts/dashboard", { toughts });
   }
 
@@ -33,7 +33,7 @@ module.exports = class ToughtController {
       title: req.body.title,
       userId: req.session.userid,
     };
-
+    
     try {
       await Tought.create(tought);
       req.flash("message", "Pensamento criado com sucesso!");
