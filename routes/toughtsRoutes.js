@@ -8,6 +8,7 @@ router.get("/add", checkAuth, ToughtController.createTought);
 router.post("/add", checkAuth, ToughtController.createToughtSave);
 router.get("/dashboard", checkAuth, ToughtController.dashboards);
 router.post("/remove", checkAuth, ToughtController.removeTought);
+router.get("/edit/:id", checkAuth, ToughtController.updateTougth);
 router.get("/", ToughtController.showToughts);
 
 module.exports = router;
