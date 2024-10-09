@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const ToughtController = require("../controllers/ToughtController");
 
-const checkAuth = require("../helpers/auth").checkAuth
+const checkAuth = require("../helpers/auth").checkAuth;
 
-router.get("/add", checkAuth, ToughtController.createTought)
+router.get("/add", checkAuth, ToughtController.createTought);
+router.post("/add", checkAuth, ToughtController.createToughtSave);
 router.get("/dashboard", checkAuth, ToughtController.dashboards);
 router.get("/", ToughtController.showToughts);
 
