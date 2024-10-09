@@ -52,4 +52,9 @@ module.exports = class AuthController {
       console.error(err);
     }
   }
+
+  static async logout(req, res) {
+    req.session.destroy();
+    res.redirect("/login");
+  }
 };
