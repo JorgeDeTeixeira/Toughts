@@ -14,6 +14,7 @@ const User = require("./models/User"); // Importa o modelo User
 const toughtsRoutes = require("./routes/toughtsRoutes"); // Importa as rotas de Toughts
 const authRoutes = require("./routes/authRoutes");
 const ToughtController = require("./controllers/ToughtController"); // Importa o controlador de Toughts
+const { checkAuth } = require("./helpers/auth");
 
 // Configura o template engine Handlebars
 app.engine("handlebars", exphbs.engine());

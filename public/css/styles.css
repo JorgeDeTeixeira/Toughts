@@ -98,7 +98,7 @@
 }
 
 form input[type="submit"],
-btn {
+.btn {
   background-color: transparent;
   color: #f6982d;
   border: 2px solid #f6982d;
@@ -113,7 +113,7 @@ btn {
 }
 
 form input[type="submit"]:hover,
-btn:hover {
+.btn:hover {
   background-color: #f6982d;
   color: white;
 }
