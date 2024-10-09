@@ -185,6 +185,10 @@ form input[type="submit"]:hover,
   color: white;
 }
 
+.dashboard a {
+  color: #f6982d;
+}
+
 /* FOOTER */
 footer {
   height: 150px;

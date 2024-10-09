@@ -21,7 +21,13 @@ module.exports = class ToughtController {
 
     const toughts = JSON.parse(JSON.stringify(user.toughts));
 
-    res.render("toughts/dashboard", { toughts });
+    let emptyToughts = false;
+
+    if (toughts.length === 0) {
+      emptyToughts = true;
+    }
+
+    res.render("toughts/dashboard", { toughts, emptyToughts });
   }
 
   static createTought(req, res) {
