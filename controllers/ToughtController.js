@@ -33,10 +33,27 @@ module.exports = class ToughtController {
       title: req.body.title,
       userId: req.session.userid,
     };
-    
+
     try {
       await Tought.create(tought);
       req.flash("message", "Pensamento criado com sucesso!");
+
+      req.session.save(() => {
+        res.redirect("/toughts/dashboard");
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async removeTought(req, res) {
+    const id = req.body.id;
+    const userId = req.session.userid;
+
+    try {
+      await Tought.destroy({ where: { id: id, userId: userId } });
+
+      req.flash("message", "Pensamento removido com sucesso!");
 
       req.session.save(() => {
         res.redirect("/toughts/dashboard");
